@@ -51,8 +51,8 @@ let string = "Hello Swift!"
 //:  値を文字列に入れるには `\(値)` とします。
 let apples = 3
 let oranges = 5
-let appleSummary = "I have \(apples) apples." // I have 3 apples. \()で文字列に値を入れられる
-let fruitSummary = "I have\(apples + oranges) pieces of fruit." // I have 8 pieces of fruit.
+let appleSummary = "I have ¥(apples) apples." // I have 3 apples. ¥()で文字列に値を入れられる
+let fruitSummary = "I have ¥(apples + oranges) pieces of fruit." // I have 8 pieces of fruit.
 
 // 算術演算子
 // +    足し算
