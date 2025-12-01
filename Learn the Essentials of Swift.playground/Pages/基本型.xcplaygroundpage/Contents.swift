@@ -5,6 +5,8 @@
  
  `var` は変数、 `let` は定数です。
  */
+// Int(https://developer.apple.com/documentation/swift/int)
+// Double(https://developer.apple.com/documentation/swift/double)
 var myVariable = 42
 myVariable = 50
 let myConstant = 42
@@ -32,6 +34,8 @@ let implicitInteger = 70 // Int型
 let implicitDouble = 70.0 // Double型
 let explicitDouble: Double = 70 // Doubleと明示することでInt型ではなくDouble型と認識させる
 //: 型を変換するには型を明示して初期化します。
+// String(https://developer.apple.com/documentation/swift/string)
+// String() (https://developer.apple.com/documentation/swift/string/init(_:radix:uppercase:))
 let label = "The width is " // String型
 let width = 94 // Int型
 let widthLabel = label + String(width) // String()でString型に変換
@@ -60,6 +64,10 @@ let fruitSummary = "I have\(apples + oranges) pieces of fruit." // I have 8 piec
  ## オプショナル
  `変数名: 型名?` で宣言します。
  */
+// Optional(https://developer.apple.com/documentation/swift/optional)
+// init?(https://developer.apple.com/documentation/swift/int/2927504-init)
+let optionalInt: Int? = 9
+
 // 全てエラーになる
 let nonNilString: String = nil
 let nonNilInteger: Int = nil
@@ -69,30 +77,47 @@ nonNilDouble = nil
 let optionalInt: Int? = 9
 //: 文字列が整数に変換できる場合
 var myString = "7"
-var possibleInt = Int(myString)
-print(possibleInt as Any) // print()の引数はany型のため、
-//: 文字列が整数に変換できない場合
+var possibleInt = Int(myString) // Optional型
+print(possibleInt as Any) // print()の引数はany型と決められているため、Optional型がany型に変換されている
 
-
-
+myString = "banana"
+possibleInt = Int(myString)
+print(possibleInt as Any) // nilになる
 /*:
  ## 配列
  */
+// 配列(https://developer.apple.com/documentation/swift/array)
+var ratingList = ["Poor", "Fine", "Good", "Excellent"] // Array<String型>
+ratingList[1] = "OK"
+ratingList // ["Poor", "OK", "Good", "Excellent"], "Fine"が"OK"になる
 
-
-
+// コンパイルエラー
+let list = [1, "One"]
+ 
+// Swift の配列は値型なので、コピーをした場合の挙動が異なる
+// JavaScriptでもbも[1, 10, 3]になる
+var a = [1, 2, 3]
+var b = a
+a[1] = 10
+a   // [1, 10, 3]
+b   // [1, 2, 3]
 //: `let` で宣言された配列は要素の変更ができません。
-
-
-
+let ratingList2 = ["Poor", "Fine, "Good", "Excellent"]
+ratingList2[1] = "OK" // error: cannot assign through subscript: 'ratingList2' is a 'let' constant
 //: 空配列の宣言とコメント
-
-
-
+// Creates an empty array.
+let emptyArray: [String] = [] // String型の空配列
+// 複数行の場合はスラッシュとアスタリスクで囲む (/* ... */)
 /*:
  ## 暗黙のオプショナルアンラップ
  */
+// implicitly unwrapped optional(https://docs.swift.org/swift-book/LanguageGuide/TheBasics.html#ID334)
+var implicitlyUnwrappedOptionalInt: Int! // nilで初期化される(オプショナル)
 
-
+var optionalInt: Int? = 3 // optionalIntはOptional型, 3はInt型なのでエラー
+print(optionalInt + 3) // コンパイルエラー
+                   
+var implicitlyUnwrappedOptionalInt: Int! = 3 // implicitlyUnwrappedOptionalIntはInt型と見なされて通される
+print(implicitlyUnwrappedOptionalInt + 3) // 6
 
 //: [Next](@next)
